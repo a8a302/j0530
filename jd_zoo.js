@@ -65,19 +65,30 @@ function QueryJDUserInfo(timeout = 0) {
       let url = {
         url : `https://wq.jd.com/user/info/QueryJDUserInfo?sceneval=2`,
         headers : {
-          'Referer' : `https://wqs.jd.com/my/iserinfo.html`,
-          'Cookie' : cookie
-        }
+        "Accept": "application/json,text/plain, */*",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "zh-cn",
+        "Connection": "keep-alive",
+        "Cookie": cookie,
+        "Referer": "https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2",
+        "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0")
+      }
       }
       $.get(url, (err, resp, data) => {
         try {
+			console.log('\n\n京东账号：'+data + ' 任务开始')
           data = JSON.parse(data);
           if (data.retcode === 13) {
             merge.enabled = false
             return
           }
-		  console.log('\n\n京东账号：'+JSON.stringify(data) + ' 任务开始')
-          merge.nickname = 'data.base.nickname';
+		  if (data.base&&data.base.nickname){
+			merge.nickname = data.base.nickname;   
+		  }else	{
+			 merge.nickname = 'data.base.nickname';  
+		  }	  
+         
         } catch (e) {
           $.logErr(e, resp);
         } finally {

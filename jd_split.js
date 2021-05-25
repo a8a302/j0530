@@ -35,7 +35,7 @@ if ($.isNode()) {
   cookiesArr.push(...[$.getdata('CookieJD'), $.getdata('CookieJD2')]);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const inviteCodes = [`P04z54XCjVUnIaW5mtRTTqhiHpNnQ`, 'P04z54XCjVUnIaW5nJcTx2Cjgk99TRkSBaU'];
+const inviteCodes =[];// [`P04z54XCjVUnIaW5mtRTTqhiHpNnQ`, 'P04z54XCjVUnIaW5nJcTx2Cjgk99TRkSBaU'];
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -268,7 +268,7 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-    const readShareCodeRes = null //await readShareCode();
+    const readShareCodeRes = null; //await readShareCode();
     if (readShareCodeRes && readShareCodeRes.code === 200) {
       $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
     }
