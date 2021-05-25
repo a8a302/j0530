@@ -76,7 +76,7 @@ function QueryJDUserInfo(timeout = 0) {
             merge.enabled = false
             return
           }
-		  console.log('\n\n京东账号：'+Json.stringify(data) + ' 任务开始')
+		  console.log('\n\n京东账号：'+JSON.stringify(data) + ' 任务开始')
           merge.nickname = 'data.base.nickname';
         } catch (e) {
           $.logErr(e, resp);
