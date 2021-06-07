@@ -6,7 +6,7 @@ name: 全民抢京豆
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 22,12 * * *'
+    - cron: '15 22 * * *'
   
   watch:
     types: started
@@ -20,8 +20,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: a8a302/jd0525
+        
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

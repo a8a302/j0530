@@ -45,9 +45,7 @@ if ($.isNode()) {
   cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const inviteCodes = [
-`S5KkcRxgY_VbTIx-llf8KJw`,
-]
+const inviteCodes =null;// [`S5KkcRxgY_VbTIx-llf8KJw`,]
 !(async () => {
   $.tuanList = []
   await requireConfig();
@@ -377,7 +375,7 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-   const readShareCodeRes = null;// await readShareCode();
+    const readShareCodeRes =null;// await readShareCode();
     if (readShareCodeRes && readShareCodeRes.code === 200) {
       $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
     }
@@ -486,7 +484,7 @@ function TotalBean() {
               $.isLogin = false; //cookie过期
               return
             }
-            $.nickName = data['base'].nickname;
+            $.nickName = (data['base'] && data['base'].nickname) || $.UserName;
           } else {
             console.log(`京东服务器返回空数据`)
           }

@@ -6,7 +6,7 @@ name: 店铺签到+interCenter渠道店铺签到
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 16,10 * * *'
+    - cron: '10 16 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -27,11 +27,11 @@ jobs:
           npm install
       - name: '运行 【店铺签到】'
         run: |
-          curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_dpqd.js -o jd_dpqd.js
+          #curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_dpqd.js -o jd_dpqd.js
           node jd_dpqd.js
-          curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_dpqd2.js -o jd_dpqd2.js
+          #curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_dpqd2.js -o jd_dpqd2.js
           node jd_dpqd2.js
-          curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_ShopSign.js -o jd_ShopSign.js
+          #curl https://raw.githubusercontent.com/inoyna11/jd28/master/jd_ShopSign.js -o jd_ShopSign.js
           node jd_ShopSign.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}

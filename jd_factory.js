@@ -36,7 +36,7 @@ if ($.isNode()) {
 }
 let wantProduct = ``;//心仪商品名称
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const inviteCodes = ["T0225KkcRxgY_VbTIx-llf8KJwCjVWnYaS5kRrbA"];
+const inviteCodes =[];// ["T0225KkcRxgY_VbTIx-llf8KJwCjVWnYaS5kRrbA"];
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -638,7 +638,7 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-   const readShareCodeRes = null;// await readShareCode();
+    const readShareCodeRes =null;// await readShareCode();
     if (readShareCodeRes && readShareCodeRes.code === 200) {
       $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
     }

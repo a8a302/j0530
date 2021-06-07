@@ -29,7 +29,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let appId = '1EFRXxg' , homeDataFunPrefix = 'interact_template', collectScoreFunPrefix = 'harmony', message = ''
 let lotteryResultFunPrefix = homeDataFunPrefix, browseTime = 6
 const inviteCodes = [
-  'T0225KkcRxgY_VbTIx-llf8KJwCjVWmIaW5kRrbA',
+  'T0225KkcRxgY_VbTIx-llf8KJwCjVQmoaT5kRrbA',
 ];
 const randomCount = 0 ;
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -297,7 +297,7 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-  const readShareCodeRes = null;// await readShareCode();
+    const readShareCodeRes =null;// await readShareCode();
     // console.log(readShareCodeRes)
     if (readShareCodeRes && readShareCodeRes.code === 200) {
       $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
